@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette: purple #480081 + lavender #E6E6F9 */
+  --color-ink: #1d0836;
+  --color-brand: #480081;
+  --color-brand-dark: #340061;
+  --color-lime: #d8c8ff; /* light violet accent (name kept for existing utility classes) */
+  --color-soft: #e6e6f9;
+  --color-line: #d4d4ee;
+  --color-muted: #66587f;
+  --color-wa: #1fa855;
+  --font-sans: "Cairo", "Montserrat", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+html[lang="fr"] body {
+  font-family: "Montserrat", "Cairo", system-ui, sans-serif;
+}
+
+/* Letter-spacing breaks Arabic letter joining */
+html[lang="ar"] *,
+html[lang="ar"] *::before,
+html[lang="ar"] *::after {
+  letter-spacing: normal !important;
+}
+
+.btn-primary {
+  background: var(--color-brand);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  transition: background 0.2s, transform 0.15s;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: var(--color-brand-dark);
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background: var(--color-wa);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  transition: filter 0.2s, transform 0.15s;
+  cursor: pointer;
+}
+.btn-wa:hover {
+  filter: brightness(0.93);
+}
+.btn-wa:active {
+  transform: scale(0.98);
+}
+.btn-wa:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-ghost {
+  border: 2px solid var(--color-ink);
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  transition: all 0.2s;
+}
+.btn-ghost:hover {
+  background: var(--color-ink);
+  color: #fff;
+}
+
+.input {
+  width: 100%;
+  border: 1.5px solid var(--color-line);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  outline: none;
+  transition: border 0.15s, box-shadow 0.15s;
+}
+.input:focus {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgb(72 0 129 / 0.16);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.marquee {
+  animation: marquee 32s linear infinite;
+}
+[dir="rtl"] .marquee {
+  animation-name: marquee-rtl;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-12px) rotate(var(--r, 0deg));
+  }
+}
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
